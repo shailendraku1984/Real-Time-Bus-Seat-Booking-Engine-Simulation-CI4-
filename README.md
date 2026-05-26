@@ -1,69 +1,185 @@
-# CodeIgniter 4 Application Starter
+# Real-Time Bus Seat Booking Engine Simulation (CI4)
 
-## What is CodeIgniter?
+> A learning-oriented concurrency-safe booking engine simulation inspired by real-world reservation systems.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+This project demonstrates how real-world booking systems  
+(railway, airline, movie ticket, ecommerce inventory)  
+prevent double booking during simultaneous requests using:
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- ACID transactions
+- Row-level locking
+- `FOR UPDATE`
+- Concurrency control
+- Transaction rollback
+- Parallel booking simulation
+- Booking audit logs
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+---
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+# Problem Statement
 
-## Installation & updates
+When multiple users attempt to book the same seat simultaneously,  
+race conditions can occur leading to double booking.
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+This project demonstrates how database transactions and row-level  
+locking solve concurrency problems in real-time booking systems.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+The project intentionally focuses on transaction isolation and concurrency handling rather than full business workflows.
 
-## Setup
+---
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+# Features
 
-## Important Change with index.php
+- Dynamic bus seat rendering
+- Interactive seat selection
+- AJAX-based booking flow
+- ACID transaction handling
+- Row-level locking using `FOR UPDATE`
+- Concurrency-safe booking
+- Parallel booking simulation
+- Transaction audit logging
+- Real-time booking conflict prevention
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+---
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+# Tech Stack
 
-**Please** read the user guide for a better explanation of how CI4 works!
+- PHP 8+
+- CodeIgniter 4
+- MySQL (InnoDB)
+- Bootstrap 5
+- JavaScript (AJAX)
+- Spark CLI
 
-## Repository Management
+---
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+# Key Technical Concepts Demonstrated
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+- ACID Transactions
+- Isolation Level Handling
+- Row-Level Locking
+- `FOR UPDATE` Query Locking
+- Race Condition Prevention
+- Transaction Rollback
+- Concurrent Request Simulation
+- Parallel cURL Requests
+- Audit Logging
+- Request Serialization
 
-## Server Requirements
+---
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+# Screenshots
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+## Frontend Booking UI
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+> Add your frontend booking UI screenshot here.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+Example:
+- Dynamic seat rendering
+- Available/Booked seat indicators
+- Interactive seat selection
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+---
+
+## Concurrent Booking Simulation
+
+> Add your Spark simulation screenshot here.
+
+Example output:
+
+```bash
+php spark simulate:booking 1 20
+```
+
+Expected Result:
+
+- 1 booking succeeds
+- remaining requests fail safely
+- no double booking occurs
+
+---
+
+# Simulation Command Usage
+
+Run concurrent booking simulation:
+
+```bash
+php spark simulate:booking 1 20
+```
+
+Explanation:
+
+- `1` = seat_id
+- `20` = concurrent booking requests
+
+This command simulates multiple users attempting to book the same seat simultaneously.
+
+---
+
+# Real-World Systems Using Similar Concepts
+
+- Railway ticket booking
+- Airline reservation systems
+- Movie ticket booking
+- Ecommerce inventory reservation
+- Flash sale systems
+- Payment transaction systems
+
+---
+
+# Booking Flow Architecture
+
+```text
+User selects seat
+        ↓
+AJAX booking request
+        ↓
+BEGIN TRANSACTION
+        ↓
+SELECT ... FOR UPDATE
+        ↓
+Row-level lock acquired
+        ↓
+Seat availability re-check
+        ↓
+Booking confirmation
+        ↓
+COMMIT / ROLLBACK
+```
+
+---
+
+# Concurrent Booking Result
+
+During simultaneous booking attempts:
+
+- First transaction acquires row lock
+- Remaining requests wait in queue
+- After commit, queued requests re-check seat status
+- Already-booked requests safely rollback
+
+This prevents race conditions and double booking.
+
+---
+
+# Future Improvements
+
+- Seat hold timeout system
+- Payment gateway simulation
+- Live seat refresh using WebSockets
+- Deadlock simulation
+- Distributed locking
+- Queue-based booking architecture
+- Redis reservation layer
+
+---
+
+# Resume-Friendly Project Summary
+
+Developed a concurrency-safe real-time bus booking simulation system using CodeIgniter 4 implementing ACID transactions, row-level locking, transaction auditing, and parallel booking simulation to prevent race conditions during simultaneous seat reservations.
+
+<img width="716" height="611" alt="real-time-booking-testing-command" src="https://github.com/user-attachments/assets/1b6d6080-1e1b-4f9a-beb8-2c5721db6730" />
+
+<img width="1366" height="532" alt="image" src="https://github.com/user-attachments/assets/45b7a53f-2b8c-4ac3-97f6-68be906b060a" />
+
+
