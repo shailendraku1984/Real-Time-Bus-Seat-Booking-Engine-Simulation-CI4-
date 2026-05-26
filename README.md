@@ -72,7 +72,7 @@ The project intentionally focuses on transaction isolation and concurrency handl
 
 ## Frontend Booking UI
 
-> Add your frontend booking UI screenshot here.
+<img width="1366" height="643" alt="Bus Seat Booking" src="https://github.com/user-attachments/assets/7557d301-2ceb-40de-9309-4eea4439941d" />
 
 Example:
 - Dynamic seat rendering
@@ -83,7 +83,7 @@ Example:
 
 ## Concurrent Booking Simulation
 
-> Add your Spark simulation screenshot here.
+<img width="716" height="611" alt="real-time-booking-testing-command" src="https://github.com/user-attachments/assets/79332d58-4e9d-4cf3-9a82-0124bd40d07e" />
 
 Example output:
 
@@ -177,9 +177,5 @@ This prevents race conditions and double booking.
 # Resume-Friendly Project Summary
 
 Developed a concurrency-safe real-time bus booking simulation system using CodeIgniter 4 implementing ACID transactions, row-level locking, transaction auditing, and parallel booking simulation to prevent race conditions during simultaneous seat reservations.
-
-<img width="716" height="611" alt="real-time-booking-testing-command" src="https://github.com/user-attachments/assets/1b6d6080-1e1b-4f9a-beb8-2c5721db6730" />
-
-<img width="1366" height="532" alt="image" src="https://github.com/user-attachments/assets/45b7a53f-2b8c-4ac3-97f6-68be906b060a" />
 
 
