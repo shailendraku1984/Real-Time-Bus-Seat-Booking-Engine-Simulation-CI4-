@@ -1,55 +1,45 @@
-#-------------------------
-# Operating Specific Junk Files
-#-------------------------
+# =========================================================
+# CodeIgniter 4 - Production Ready .gitignore
+# =========================================================
 
-# OS X
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# OS X Thumbnails
-._*
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# Linux
-*~
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-#-------------------------
+# -----------------------------
 # Environment Files
-#-------------------------
-# These should never be under version control,
-# as it poses a security risk.
+# -----------------------------
 .env
-.vagrant
-Vagrantfile
+.env.*
+!.env.example
 
-#-------------------------
-# Temporary Files
-#-------------------------
+# -----------------------------
+# Composer
+# -----------------------------
+/vendor/
+/composer.phar
+
+# -----------------------------
+# Node / Frontend
+# -----------------------------
+/node_modules/
+/npm-debug.log
+/yarn-error.log
+/pnpm-lock.yaml
+
+# -----------------------------
+# Build / Frontend Assets
+# -----------------------------
+/public/build
+/public/hot
+/public/assets/build
+
+# -----------------------------
+# Writable Directory
+# IMPORTANT:
+# Keep writable/ structure but ignore runtime files
+# -----------------------------
 /writable/cache/*
 !/writable/cache/index.html
+
+/writable/debugbar/*
+!/writable/debugbar/index.html
 
 /writable/logs/*
 !/writable/logs/index.html
@@ -60,67 +50,82 @@ Vagrantfile
 /writable/uploads/*
 !/writable/uploads/index.html
 
-/writable/debugbar/*
-!/writable/debugbar/index.html
+/writable/tmp/*
+!/writable/tmp/index.html
 
-php_errors.log
+/writable/database/*
+!/writable/database/index.html
 
-#-------------------------
-# User Guide Temp Files
-#-------------------------
-/user_guide_src/build/*
-/user_guide_src/cilexer/build/*
-/user_guide_src/cilexer/dist/*
-/user_guide_src/cilexer/pycilexer.egg-info/*
-
-#-------------------------
-# Test Files
-#-------------------------
-/tests/coverage*
-
-# Don't save phpunit under version control.
-/phpunit
-
-#-------------------------
-# Composer
-#-------------------------
-vendor/
-
-#-------------------------
-# IDE / Development Files
-#-------------------------
-
-# Modules Testing
-_modules/*
-
-# phpenv local config
-.php-version
-
-# Jetbrains editors (PHPStorm, etc)
-.idea/
-*.iml
-
-# NetBeans
-/nbproject/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/nbactions.xml
-/nb-configuration.xml
-/.nb-gradle/
-
-# Sublime Text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-.phpintel
-/api/
-
-# Visual Studio Code
-.vscode/
-
-/results/
+# -----------------------------
+# PHPUnit / Testing
+# -----------------------------
 /phpunit.xml
+/phpunit.xml.dist
+/.phpunit.result.cache
+
+# -----------------------------
+# IDE / Editors
+# -----------------------------
+/.vscode/
+/.idea/
+/*.sublime-project
+/*.sublime-workspace
+
+# -----------------------------
+# OS Files
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Logs
+# -----------------------------
+*.log
+
+# -----------------------------
+# Cache Files
+# -----------------------------
+*.cache
+
+# -----------------------------
+# Backup Files
+# -----------------------------
+*.bak
+*.sql
+*.sqlite
+*.sqlite3
+
+# -----------------------------
+# Xdebug / Coverage
+# -----------------------------
+/coverage/
+/build/
+
+# -----------------------------
+# Temporary Files
+# -----------------------------
+*.tmp
+*.temp
+
+# -----------------------------
+# CI/CD
+# -----------------------------
+.php-cs-fixer.cache
+
+# -----------------------------
+# Docker
+# -----------------------------
+docker-compose.override.yml
+
+# -----------------------------
+# Sensitive Keys / Certificates
+# -----------------------------
+*.pem
+*.key
+*.crt
+
+# -----------------------------
+# Optional Upload Ignore
+# Uncomment if storing uploads locally
+# -----------------------------
+# /public/uploads/
